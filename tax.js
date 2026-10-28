@@ -1,3 +1,4 @@
+
 document.getElementById("tax_form").addEventListener("submit", function (event) {
          event.preventDefault()
 
@@ -13,53 +14,101 @@ document.getElementById("tax_form").addEventListener("submit", function (event) 
         document.getElementById('gross').innerHTML = gross_salary
 
 
+        //computing nhif
+        function calculate_nhif(gross) {
+        let nhif;
+
+        if (gross > 0 && gross <= 5999) {
+            nhif = 150;
+        } else if (gross >= 6000 && gross <= 7999) {
+            nhif = 300;
+        } else if (gross >= 8000 && gross <= 11999) {
+            nhif = 400;
+        } else if (gross >= 12000 && gross <= 14999) {
+            nhif = 500;
+        } else if (gross >= 15000 && gross <= 19999) {
+            nhif = 600;
+        } else if (gross >= 20000 && gross <= 24999) {
+            nhif = 750;
+        } else if (gross >= 25000 && gross <= 29999) {
+            nhif = 850;
+        } else if (gross >= 30000 && gross <= 34999) {
+            nhif = 900;
+        } else if (gross >= 35000 && gross <= 39999) {
+            nhif = 950;
+        } else if (gross >= 40000 && gross <= 44999) {
+            nhif = 1000;
+        } else if (gross >= 45000 && gross <= 49999) {
+            nhif = 1100;
+        } else if (gross >= 50000 && gross <= 59999) {
+            nhif = 1200;
+        } else if (gross >= 60000 && gross <= 69999) {
+            nhif = 1300;
+        } else if (gross >= 70000 && gross <= 79999) {
+            nhif = 1400;
+        } else if (gross >= 80000 && gross <= 89999) {
+            nhif = 1500;
+        } else if (gross >= 90000 && gross <= 99999) {
+            nhif = 1600;
+        } else {
+            nhif = 1700;
+        }
+
+        return nhif;
+        }
+
+        let nhif = calculate_nhif(gross_salary);
+        document.getElementById('nhif').innerHTML = nhif
+
+        // Continue with the program above, then use  the gross salary to find the NSSF. 
+        // To find the Kenya NSSF Rate  using 6% of the Gross Salary.
+        //  BUT ONLY A MINIMUM OF 18,000 Gross Salary CAN BE USED IN NSSF. 
+
+        function calculate_nssf(gross){
+            let nssf 
+            if(gross < 18000){
+                nssf = gross * 0.06
+            }else{
+                nssf = 1080
+            }
+            return nssf
+        }
+
+        let nssf = calculate_nssf(gross_salary)
+        document.getElementById('nssf').innerHTML = nssf
+
+
+
+        function calculate_nhdf(gross){
+            return gross * 0.015
+        }
+
+        let nhdf = calculate_nhdf(gross_salary)
+        document.getElementById('nhdf').innerHTML = nhdf
+
+
+
+        function calculate_taxable_income(gross,nssf,nhdf,nhif){
+            return gross - (nssf + nhdf + nhif)
+        }
+
+        let taxable_income= calculate_taxable_income(gross_salary,nssf,nhdf,nhif)
+        document.getElementById('taxable_income').innerHTML = taxable_income 
+
+
+
+
+
+
+
 
 
 
 });
 
-//computing nhif
-function calculate_nhif(gross) {
-  let nhif;
 
-  if (gross > 0 && gross <= 5999) {
-    nhif = 150;
-  } else if (gross >= 6000 && gross <= 7999) {
-    nhif = 300;
-  } else if (gross >= 8000 && gross <= 11999) {
-    nhif = 400;
-  } else if (gross >= 12000 && gross <= 14999) {
-    nhif = 500;
-  } else if (gross >= 15000 && gross <= 19999) {
-    nhif = 600;
-  } else if (gross >= 20000 && gross <= 24999) {
-    nhif = 750;
-  } else if (gross >= 25000 && gross <= 29999) {
-    nhif = 850;
-  } else if (gross >= 30000 && gross <= 34999) {
-    nhif = 900;
-  } else if (gross >= 35000 && gross <= 39999) {
-    nhif = 950;
-  } else if (gross >= 40000 && gross <= 44999) {
-    nhif = 1000;
-  } else if (gross >= 45000 && gross <= 49999) {
-    nhif = 1100;
-  } else if (gross >= 50000 && gross <= 59999) {
-    nhif = 1200;
-  } else if (gross >= 60000 && gross <= 69999) {
-    nhif = 1300;
-  } else if (gross >= 70000 && gross <= 79999) {
-    nhif = 1400;
-  } else if (gross >= 80000 && gross <= 89999) {
-    nhif = 1500;
-  } else if (gross >= 90000 && gross <= 99999) {
-    nhif = 1600;
-  } else {
-    nhif = 1700;
-  }
 
-  return nhif;
-}
 
-let nhif = calculate_nhif(gross_salary);
-console.log(nhif);
+
+
+

@@ -36,3 +36,33 @@ link the form to the js program
 
 *N/B* -> After an event occurs e.g submit , the default behaviour of the browser is to refresh
 -> to prevent the default behaviour of the browser (refreshing) after an event occurs we use *event.preventDefault()*
+
+
+*Deploying our project*
+-> The project is meant to be deployed in Netlify (paas)
+
+
+*cloud service models*
+-> How cloud services and resources are delivered to an enduser
+
+*IAAS*
+-> Infrastructure as a service 
+-> Actual purchase of real computing resources -> rent servers and manage compute on our own
+-> This needs specialized skills (DevOps)  -> usually done by developers
+-> planning --> design ---> build ---> test ---> deploy ---> maintain
+*PAAS*
+--> Platform as a service 
+---> allows developers to build and deploy applications without having to manage infrastructure
+-> use existing easy to use platforms to deploy applications e.g netlify , heroku , vercel
+*SAAS* 
+----> softwware as a service
+---> ready to use applications that are deployed on the cloud
+--> e.g. Google drive , Icloud , Netflix
+
+
+*TASK*
+1.Ensure your tax project has all fields working i.e. you can output all tax categories in the table 
+2.Style it properly with CSS --> have modern responsive designs --> have a good navbar and footer --> 
+  --> give your application a unique name
+3.Add context to your application e.g. how is NSSF, NHIF, NHDF, Payee etc calculated 
+4.Deploy your application to Netlify and share link in the group
